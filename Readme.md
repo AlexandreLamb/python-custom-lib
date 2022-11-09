@@ -1,6 +1,6 @@
-# Python instal library localy
+# Python install library local
 
-## Work on an test environment
+## Work on and test environment
 
 Ubuntu 20.04
 
