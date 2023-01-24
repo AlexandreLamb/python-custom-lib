@@ -41,10 +41,10 @@ if not os.path.isdir(python_path):
     sys.exit(1)
     
 # Check if python path is a virtual environment
-if not os.path.isfile(os.path.join(python_path, "pyvenv.cfg")):
+"""if not os.path.isfile(os.path.join(python_path, "pyvenv.cfg")):
     print("Please provide valid python virtual environment path")
     sys.exit(1)
-    
+"""    
 # Check if python path lib folder exists
 if not os.path.isdir(os.path.join(python_path, "lib")):
     print("Please provide valid python virtual environment path")
