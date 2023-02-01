@@ -19,9 +19,9 @@ args = parser.parse_args()
 
 #check if local python lib file is provided
 if args.Input_File:
-    input_file = args.Input_File
+    input_file_path = args.Input_File
 else:
-    input_file = input("Please enter path to local input library file to install in virutal python environment")
+    input_file_path = input("Please enter path to local input library file to install in virutal python environment")
 
 #check if python path is provided
 if args.Python_Path:
@@ -31,7 +31,7 @@ else:
     sys.exit(1)
     
 # check if python local lib file exists and is a python file
-if not (os.path.isfile(input_file) and input_file.endswith(".py")):
+if not (os.path.isfile(input_file_path) and input_file_path.endswith(".py")):
     print("Please provide a valid python file")
     sys.exit(1)
 
@@ -61,13 +61,14 @@ if not os.path.isdir(os.path.join(python_path, "lib", python_version_from_dir, "
     sys.exit(1)
     
 # path to site-packages folder
-path_to_site_packages = os.path.join(os.getcwd(), python_path, "lib", python_version_from_dir, "site-packages",input_file)
-input_file = os.path.join(os.getcwd(), input_file)
+input_file = os.path.basename(input_file_path)
+path_to_site_packages = os.path.join(os.getcwd(), python_path, "lib", python_version_from_dir, "site-packages")
+package_file_path = os.path.join(path_to_site_packages, input_file)
 
 #Check if input file is already present in site-packages folder
-if os.path.exists(os.path.join(path_to_site_packages, os.path.basename(input_file))):
-    print("File" + os.path.basename(input_file) + "already exists in site-packages folder")
-    print("Input file is at path: " + input_file)
+if os.path.exists(package_file_path):
+    print("File" + input_file + "already exists in site-packages folder")
+    print("Input file is at path: " + input_file_path)
     print("Site-packages folder is at path: " + path_to_site_packages)
     sys.exit(1)
     
@@ -79,7 +80,7 @@ print("With input file: ", input_file)
 
 # create a symbolic link to local python lib file in site-packages folder
 try : 
-    os.symlink(input_file, path_to_site_packages)
+    os.symlink(input_file_path, package_file_path)
     
     print("Library file installed successfully")
     print("Input file is at path: " + input_file)
