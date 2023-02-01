@@ -26,7 +26,7 @@ source path/to/venv3.8/bin/activate
 After that install the tools 
 
 ```bash
-python<your-version-of-python> setup.py install 
+python setup.py install 
 ```
 ## Usage
 Go to the folder where you have your python file and run the following command:
