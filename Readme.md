@@ -18,6 +18,11 @@ Create a virtual environment with e.g. `virtualenv` and activate it.
 ```bash
 virtualenv -p /usr/bin/python3.8 venv3.8
 ```
+
+Activate the vitual env.
+```bash
+source path/to/venv3.8/bin/activate
+```
 After that install the tools 
 
 ```bash
